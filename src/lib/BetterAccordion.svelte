@@ -4,17 +4,21 @@
     export let isOpen = true
 </script>
 
-    <button on:click={() => (isOpen = !isOpen)}>
-        <span class:isOpen>▲</span>
-        {buttonText}
-        </button>
-
-    <div class="accordion-content" use:slide={isOpen}>
+<button on:click={() => (isOpen = !isOpen)}>
+    <span class:isOpen>▲</span>
+    {buttonText}
+    </button>
+    
+    <div class="accordion-content" use:slide={{ isOpen, duration: 300 }} on:animationEnd={() => console.log('Animation End')}>
+<div class="wrapper">
         <slot />
     </div>
-
+</div>
 
 <style>
+    .wrapper {
+        padding: 20px;
+    }
     button {
         display: block;
         width: 100%;
