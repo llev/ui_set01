@@ -2,6 +2,7 @@
     // import Toggle from "$lib/toggle.svelte"
     // import BetterAccordion from "$lib/BetterAccordion.svelte"
     import SearchFilter from '$lib/SearchFilter.svelte'
+    import Field from '$lib/field.svelte'
     let isToggled = false
 
     let search = ""
@@ -27,7 +28,7 @@
 <h1>Welcome to SvelteKit {search} </h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-
+<Field bind:value={search} label="Test label" instructions="Test instructions" placeholder="Test placeholder"/>
 <SearchFilter {items} bind:search />
 
 <!-- <Toggle bind:isToggled label="Test"/>
