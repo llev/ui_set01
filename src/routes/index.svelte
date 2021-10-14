@@ -3,33 +3,30 @@
     // import BetterAccordion from "$lib/BetterAccordion.svelte"
     import SearchFilter from '$lib/SearchFilter.svelte'
     import Field from '$lib/field.svelte'
+    // import Portal from '$lib/Portal.svelte'
+    import Modal from '$lib/Modal.svelte'
+    
     let isToggled = false
-
+    let isModalOpen = false 
+    
     let search = ""
-
-    let items = [
-        "Robin Nightwing",
-        "Spider Man",
-        "Captain America",
-        "Steve Rogers",
-        "Iron Man",
-        "Tony Stark",
-        "Thor", 
-        "Hulk",
-        "Bruce Banner",
-        "Wolverine", 
-        "James Howlett",
-        "Daredevil", 
-        "Hawkeye", 
-        "Cyclops", 
+    let items = [ "Robin Nightwing","Spider Man","Captain America", "Steve Rogers","Iron Man","Tony Stark","Thor", "Hulk","Bruce Banner","Wolverine", "James Howlett","Daredevil", "Hawkeye","Cyclops", 
 ]
 </script>
 
 <h1>Welcome to SvelteKit {search} </h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-<Field bind:value={search} label="Test label" instructions="Test instructions" placeholder="Test placeholder"/>
-<SearchFilter {items} bind:search />
+<Modal bind:isModalOpen>
+    <div style="background: white; box-shadow: 1px 1px 4px rgba(0,0,0,0.3)">
+        <Field bind:value={search} label="Test label" instructions="Test instructions" placeholder="Test placeholder"/>
+        <SearchFilter {items} bind:search />
+    </div>
+</Modal>
+
+<button on:click={() => (isModalOpen = true)}>
+    Open
+</button>
 
 <!-- <Toggle bind:isToggled label="Test"/>
 <Toggle bind:isToggled label="Test" style="--toggleBackgroundColour: red;"/> -->
