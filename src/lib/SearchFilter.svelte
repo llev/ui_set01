@@ -39,6 +39,7 @@
         padding: 10px;
         cursor: pointer;
         transition: 0.3 background ease;
+        background: white;
     }
     li:hover {
         background: var(--listItemBackground, #eee)
