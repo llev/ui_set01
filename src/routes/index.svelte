@@ -2,9 +2,11 @@
     // import Toggle from "$lib/toggle.svelte"
     // import BetterAccordion from "$lib/BetterAccordion.svelte"
     import SearchFilter from '$lib/SearchFilter.svelte'
-    import Field from '$lib/field.svelte'
+    import Field from '$lib/Field.svelte'
     // import Portal from '$lib/Portal.svelte'
     import Modal from '$lib/Modal.svelte'
+    import Toast from '$lib/toast/Toast.svelte'
+    import { toast } from '$lib/toast/toast'
     
     let isToggled = false
     let isModalOpen = false 
@@ -17,7 +19,7 @@
 <h1>Welcome to SvelteKit {search} </h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-<Modal bind:isModalOpen>
+<Modal bind:isModalOpen background={true}>
     <div style="background: white; box-shadow: 1px 1px 4px rgba(0,0,0,0.3)">
         <Field bind:value={search} label="Test label" instructions="Test instructions" placeholder="Test placeholder"/>
         <SearchFilter {items} bind:search />
@@ -27,6 +29,12 @@
 <button on:click={() => (isModalOpen = true)}>
     Open
 </button>
+
+<Toast duration={4000}/>
+<button on:click={() => toast.send('NEW MESSAGE!' + Math.random())}>
+    New Toast
+</button>
+
 
 <!-- <Toggle bind:isToggled label="Test"/>
 <Toggle bind:isToggled label="Test" style="--toggleBackgroundColour: red;"/> -->
